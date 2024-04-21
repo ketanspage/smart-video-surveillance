@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Surveillance System</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="sticky justify-between top-0 z-10 bg-gray-800 text-white flex items-center h-16 px-4 text-lg font-bold border-b border-gray-700">
+    <div>
+      <a class="hover:text-gray-300" href="/home">
+        Smart Surveillance System
+      </a>
+    </div>
+    <div class="space-x-12 flex flex-row">
+      <a href="/" class="relative flex h-[10px] w-10 shrink-0 overflow-hidden rounded-full"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+      </svg>
+      </a>
+    </div>
+  </div>
+  <section class="min-h-screen flex justify-center items-center flex-col">
+    <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data" class="w-full flex flex-col space-y-20 justify-center">
+     
+      <div class="flex md:flex-row flex-col justify-around">
+      <div class="flex flex-col rounded-xl border bg-card text-card-foreground shadow p-8 space-y-8">
+      <label class="text-3xl font-bold text-gray-800">Upload video to analyze</label>
+      <input id="myFile" type="file" name="video" accept=".mp4" class="border rounded-md px-2 py-1">
+      <video id="preview" width="320" height="240" controls class="rounded-md"></video>
+      </div>
+      <div class="flex flex-col rounded-xl border bg-card text-card-foreground shadow p-8 space-y-8">
+      <label class="text-3xl font-bold text-gray-800" for="candidate_labels" class="text-gray-700">Enter outliers to be analysed</label>
+      <textarea class="border rounded-md px-2 py-1 h-full" placeholder="military activity, attack by a dog, car crash......." type="text" name="candidate_labels" id="candidate_labels" required></textarea>
+      </div>
+      </div>
+      <div class="flex justify-center">
+      <button type="submit" value="Upload and Analyze" class="w-2/6 bg-black hover:bg-gray-800 text-white font-bold py-3 px-4 rounded-md">Analyze the video</button>
+      </div>
+    </form>
+  </section>
+  <div class="fixed bottom-0 w-full bg-gray-800 text-white text-center py-2">
+    Created by Dibyadarsan Das, Ketan Gandhi, Lokesh Bhuyan, Pabak Kundu
+  </div>
+</body>
+<script>
+const videoInput = document.getElementById('myFile');
+const videoPreview = document.getElementById('preview');
+
+videoInput.addEventListener('change', function(e) {
+  const file = e.target.files[0];  // Get the uploaded file
+
+  if (file.type.match('video.*')) {  // Check if it's a video file
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+      videoPreview.src = event.target.result;  // Set the video source
+    };
+
+    reader.readAsDataURL(file);
+  } else {
+    alert('Please select a video file.');
+  }
+});
+</script>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Surveillance System:Authentication Page</title>
+    <link href=
+    "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+              rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-RDVdFPYqbWSjyVcOo3TEQgH1xMxurCgy5FZb9UZyW8SBcKSeFZpOrLJmg+e6I2sNTVNemIueAyUgrkLukvI4hA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* Mimic React Bootstrap Header UI and Fonts */
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      
+
+      .navbar-brand-text {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+        margin-left: 10px;
+      }
+
+      .logo-image {
+        width: 40px; /* Adjust according to your logo size */
+        height: auto;
+        margin-right: 10px;
+      }
+
+      .container {
+        margin-top: 20px; /* Reduced margin from the top */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 20px); /* Adjusted height */
+      }
+      .signin-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+      }
+
+     
+
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      input[type="submit"] {
+        background-color:black;
+        color: #fff;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      input[type="submit"]:hover {
+        background-color:  gray ;
+      }
+
+      .error-message {
+        color: red;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-col">
+      <div class="sticky justify-between top-0 z-10 bg-gray-800 text-white flex items-center h-16 px-4 text-lg font-bold border-b border-gray-700">
+        <div>
+            <div class="font-semibold" >
+              Smart Surveillance System
+            </div>
+            </div>
+           
+          </div>
+
+
+    <div class="container">
+      <div class="signin-container">
+        <h1>Sign In</h1>
+        <form id="loginForm" onsubmit="return validateForm()">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            required
+          /><br />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            required
+          /><br />
+          <input type="submit" value="Sign In" >
+          <p class="error-message" id="errorMessage"></p>
+        </form>
+      </div>
+    </div>
+    </div>
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      function validateForm() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var errorMessage = document.getElementById("errorMessage");
+
+        // Simulating authentication
+        if (email === "admin@mail.com" && password === "password") {
+          window.location.href = "/home"; // Redirect on successful sign-in
+          return false; // Prevent form submission
+        } else {
+          errorMessage.innerText = "Invalid email or password.";
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>
