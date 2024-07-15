@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 import os
 from analyse import analyze_video
+from keep_alive import keep_alive
+keep_alive()
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config["UPLOAD_FOLDER"] = os.path.join(basedir, "static/videos")
