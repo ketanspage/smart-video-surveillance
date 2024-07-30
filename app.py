@@ -7,9 +7,6 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config["UPLOAD_FOLDER"] = os.path.join(basedir, "static/videos")
 
-@app.route("/")
-def auth():
-  return render_template("auth.html")
 
 @app.route("/home")
 def home():
